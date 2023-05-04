@@ -1,4 +1,4 @@
-package activity2;
+package CopyAcitivity2;
 
 import java.util.Scanner;
 
