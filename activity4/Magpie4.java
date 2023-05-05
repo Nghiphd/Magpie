@@ -33,6 +33,8 @@ public class Magpie4
     public String getResponse(String statement)
     {
         String response = "";
+        int psnI = findKeyword(statement, "I", 0);
+        
         if (statement.length() == 0)
         {
             response = "Say something, please.";
@@ -54,9 +56,16 @@ public class Magpie4
         else if (findKeyword(statement, "I want to", 0) >= 0)
         {
             response = transformIWantToStatement(statement);
-        } else if (findKeyword(statement, "I want", 0) >= 0) {
+        } 
+        else if (findKeyword(statement, "I want", 0) >= 0)
+        {
             response = transformIWantStatement(statement);
-        } else if (findKeyword(statement, "", 0) >= 0)
+        } 
+        else if (psnI >= 0 
+        && findKeyword(statement, "you", psnI) >= 0) 
+        {
+            response = transformIYouStatement(statement);
+        }
 
         else
         {
@@ -143,7 +152,7 @@ public class Magpie4
         int psnOfYou = findKeyword (statement, "you", psnOfI + 3);
         
         String restOfStatement = statement.substring(psnOfI + 1, psnOfYou).trim();
-        return "“Why do you " + restOfStatement + " you?";
+        return "Why do you " + restOfStatement + " you?";
     }
     
     /**
