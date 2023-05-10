@@ -1,4 +1,4 @@
-package CopyAcitivity2;
+package activity5;
 
 import java.util.Scanner;
 
@@ -7,23 +7,23 @@ import java.util.Scanner;
  * @author Laurie White
  * @version April 2012
  */
-public class MagpieRunner2
+public class johnLennonRunner
 {
 
     /**
-     * Create a Magpie, give it user input, and print its replies.
+     * Create a johnLennon, give it user input, and print its replies.
      */
     public static void main(String[] args)
     {
-        Magpie2 maggie = new Magpie2();
-        
-        System.out.println (maggie.getGreeting());
+        johnLennon lennon = new johnLennon();
+
+        System.out.println (lennon.getGreeting());
         Scanner in = new Scanner (System.in);
         String statement = in.nextLine();
-        
-        while (!statement.equals("Bye".toLowerCase()))
+
+        while (!statement.equals("Peace out"))
         {
-            System.out.println (maggie.getResponse(statement));
+            System.out.println (lennon.getResponse(statement));
             statement = in.nextLine();
         }
     }
