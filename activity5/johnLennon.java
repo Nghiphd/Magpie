@@ -46,7 +46,8 @@ public class johnLennon
         }
         else if (findKeyword(statement, "father") >= 0)
         {
-            response =("I've always wanted his affection and I also hated"+ 
+            response =("I've always wanted my father's affection and at the " 
+            "same time I also hated"+ 
             " him for abandoning me, but when he came back into my life it"+ 
             " wasn't a beautiful reunion by any means, mostly because of me.");
         }
