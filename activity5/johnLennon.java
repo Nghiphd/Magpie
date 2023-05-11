@@ -46,10 +46,10 @@ public class johnLennon
         }
         else if (findKeyword(statement, "father") >= 0)
         {
-            response =("I've always wanted my father's affection and at the " 
-            "same time I also hated"+ 
-            " him for abandoning me, but when he came back into my life it"+ 
-            " wasn't a beautiful reunion by any means, mostly because of me.");
+            response =("I have always wanted my father's affection and at the\n" +
+            "same time I also hated him for abandoning me, but when he came\n"+ 
+            "back into my life it was not a beautiful reunion by any means\n"+
+            "we would have not met if I was not renown");
         }
         else if (findKeyword(statement, "mother") >= 0
         || findKeyword(statement, "father") >= 0
@@ -270,6 +270,7 @@ public class johnLennon
             "Ight, Imma smoke some weed.",
             "Aaanny waays, want some of the good stuff?",
             "You don't say.",
+            "No way, mate",
             "Did you know weed is an esstenital part of breakfeast?"
         };
 
