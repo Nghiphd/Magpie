@@ -44,19 +44,23 @@ public class johnLennon
         {
             response = "Why so negative?";
         }
-        else if (findKeyword(statement, "father") >= 0)
+        else if (findKeyword(statement, "His father") >= 0)
         {
-            response =("I have always wanted my father's affection and at the\n" +
-            "same time I also hated him for abandoning me, but when he came\n"+ 
-            "back into my life it was not a beautiful reunion by any means\n"+
-            "we would have not met if I was not renown");
+            response ="The father of John is Alfred Lennon, but John's mother "+ 
+            "had him with another man. Alfred appeared once in John's life in "+
+            "1946 to secretly bring John with him to New Zealand, but then "+
+            "but then agreed that John would be better with Julia (John's mother) "+
+            "He then disappeared for 20 years. It was during Beatlemania that"+
+            " Alfred had appeared in front of John with a journalist telling John" +
+            " \"You can't turn your back on your family, no matter what they've done.\". "+
+            "Another time they met John had an outburst, due to his Primal Therapy ";
         }
-        else if (findKeyword(statement, "mother") >= 0
-        || findKeyword(statement, "father") >= 0
-        || findKeyword(statement, "sister") >= 0
-        || findKeyword(statement, "brother") >= 0)
+        else if (findKeyword(statement, "Julian") >= 0
+        || findKeyword(statement, "Cynthia") >= 0
+        || findKeyword(statement, "Wife") >= 0
+        || findKeyword(statement, "Son") >= 0)
         {
-            response = "Tell me more about your family.";
+            response = "I ";
         }
 
         // Responses which require transformations
@@ -102,7 +106,29 @@ public class johnLennon
         }
         return response;
     }
-
+    
+    /**
+     * Take a statement with "Your Father." and transform it into 
+     * "What would it mean to <something>?"
+     * @param statement the user statement, assumed to contain "I want to"
+     * @return the transformed statement
+     */
+    private String transformYourFatherStatement(String statement)
+    {
+        //  Remove the final period, if there is one
+        statement = statement.trim();
+        String lastChar = statement.substring(statement
+                .length() - 1);
+        if (lastChar.equals("."))
+        {
+            statement = statement.substring(0, statement
+                .length() - 1);
+        }
+        int psn = findKeyword (statement, "I want to", 0);
+        String restOfStatement = statement.substring(psn + 9).trim();
+        return "What would it mean to " + restOfStatement + "?";
+    }
+    
     /**
      * Take a statement with "I want to <something>." and transform it into 
      * "What would it mean to <something>?"
