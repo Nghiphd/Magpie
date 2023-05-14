@@ -22,7 +22,7 @@ public class johnLennon
      */    
     public String getGreeting()
     {
-        return "Hello, let's talk.";
+        return "Hey there, I'm John Lennon.";
     }
 
     /**
@@ -39,191 +39,88 @@ public class johnLennon
         {
             response = "Say something, please.";
         }
-
-        else if (findKeyword(statement, "no") >= 0)
+        else if (findKeyword(statement, "where")>= 0
+        || findKeyword(statement, "when")>= 0
+        && findKeyword(statement, "you born") >= 0) 
         {
-            response = "Why so negative?";
-        }
-        else if (findKeyword(statement, "His father") >= 0)
-        {
-            response ="The father of John is Alfred Lennon, but John's mother "+ 
-            "had him with another man. Alfred appeared once in John's life in "+
-            "1946 to secretly bring John with him to New Zealand, but then "+
-            "but then agreed that John would be better with Julia (John's mother) "+
-            "He then disappeared for 20 years. It was during Beatlemania that"+
-            " Alfred had appeared in front of John with a journalist telling John" +
-            " \"You can't turn your back on your family, no matter what they've done.\". "+
-            "Another time they met John had an outburst, due to his Primal Therapy ";
-        }
-        else if (findKeyword(statement, "Julian") >= 0
-        || findKeyword(statement, "Cynthia") >= 0
-        || findKeyword(statement, "Wife") >= 0
-        || findKeyword(statement, "Son") >= 0)
-        {
-            response = "I ";
+            response = "Liverpool, England on October 9, 1940.";
         }
 
-        // Responses which require transformations
-        else if (findKeyword(statement, "I want to", 0) >= 0)
+        else if (findKeyword(statement, "children") >= 0) 
         {
-            response = transformIWantToStatement(statement);
-        }
-        //  Part of student solution
-        else if (findKeyword(statement, "I want", 0) >= 0)
-        {
-            response = transformIWantStatement(statement);
+            response = "I had two. My son Julian with my ex-wife, and Sean with my current wife. \n"+
+            "I also have a stepdaughter Kyoko Cox from my wife.";
         }
 
-        else
+        else if (findKeyword(statement, "you married") >= 0) 
         {
+            response = "Yes, twice to my now ex-wife Cynthia Powell, and my current wife Yoko Ono.";
+        }
 
-            // Look for a two word (you <something> me)
-            // pattern
-            int psn = findKeyword(statement, "you", 0);
+        else if (findKeyword(statement, "your name") >= 0) 
+        {
+            response = "John Lennon, but I refer to myself in the third person sometimes. I'm also dead.";
+        }
 
-            if (psn >= 0
-            && findKeyword(statement, "me", psn) >= 0)
+        else if (findKeyword(statement, "you famous for") >= 0) 
+        {
+            response = "Musican, and songwriter. I was once in a pretty small band known as Beatles, \n"+
+            "I don't if you've heard of us, but we make some pretty rockin music.";
+        }
+
+        else if (findKeyword(statement, "Alfred Lennon") >= 0
+        || findKeyword(statement, "Alf") >= 0
+        || findKeyword(statement, "Alfred") >= 0)
+        {
+            response ="The biological father of John Lennon. Alfred appeared \n"+
+            "once in John's life in 1946 to secretly bring John with him to \n"+
+            "New Zealand, but then agreed with Julia John's mother) that \n"+
+            "John would be better with his mother. Alfred then disappeared for \n"+
+            "20 years. It was during Beatlemania that Alfred had recognized his \n"+
+            "son in a newspaper mentioning the Beatles. John later found out from \n"+
+            "his aunt mimi that Alfred was his biological father, not Bobby Dykins. \n"+
+            "On many occasions Alfred had asked John for money. One time he had \n"+
+            "appeared in front of John with a journalist telling John \"You can't turn \n"+
+            "your back on your family, no matter what they've done.\". Their relationship \n"+
+            "was always strained, but it was slowly mended during the 1970s, \n"+
+            "but John was killed in 1980, before they could truely reconcil.";
+        }
+
+        else if (findKeyword(statement, "Bobby Dykins")>=0
+        ||  findKeyword(statement, "Bobby") >= 0
+        ||  findKeyword(statement, "James Stanley Dykins")>=0)
+        {
+            response = "John and Bobby's relationship was difficult. While Bobby \n"+
+            "was his legal stepfather, John had a rocky connection with him and \n"+
+            "often referred to him as a \"monster.\" Bobby and Julia's marriage \n"+
+            "was rocky, and Bobby was physically abusive to Julia, which may have \n"+
+            "led to John's dislike for him. Despite their disagreements, John \n"+
+            "credits Bobby with introducing him to rock and roll music, which \n"+
+            "had a significant impact on his career. In interviews, John has also \n"+
+            "stated that he valued Bobby's musical talent and admired him for his part \n"+
+            "in molding his musical tastes. While their partnership was not without its difficulties, \n"+
+            "Bobby was a crucial part of John's life and artistic growth.";
+        }
+
+        else {
+            if (findKeyword(statement, "Julian") >= 0
+            || findKeyword(statement, "Cynthia") >= 0
+            || findKeyword(statement, "wife") >= 0
+            || findKeyword(statement, "Son") >= 0)
             {
-                response = transformYouMeStatement(statement);
-            }
-            else
-            {
-                //  Part of student solution
-                // Look for a two word (I <something> you)
-                // pattern
-                psn = findKeyword(statement, "i", 0);
-
-                if (psn >= 0
-                && findKeyword(statement, "you", psn) >= 0)
-                {
-                    response = transformIYouStatement(statement);
-                }
-                else
-                {
-                    response = getRandomResponse();
-                }
+                response = "Cynthia and Julian Lennon's relationships with John Lennon were \n"+
+                "sometimes strained and volatile. John and Cynthia married in 1962 and had Julian \n"+
+                "a year later, but the stress of Beatlemania, as well as John's infidelity, strained \n"+
+                "their marriage. They divorced in 1968, and John subsequently acknowledged to mistreating \n"+
+                "Cynthia during their marriage. Julian's connection with John was similarly tense. \n"+
+                "He frequently ignored him in favor of his music career and new relationship with Yoko Ono. \n"+
+                "Despite this, John loved Julian and tried to make amends later in life, but he was assassinated \n"+
+                "in 1980 before their relationship could be properly repaired. ";
             }
         }
         return response;
     }
-    
-    /**
-     * Take a statement with "Your Father." and transform it into 
-     * "What would it mean to <something>?"
-     * @param statement the user statement, assumed to contain "I want to"
-     * @return the transformed statement
-     */
-    private String transformYourFatherStatement(String statement)
-    {
-        //  Remove the final period, if there is one
-        statement = statement.trim();
-        String lastChar = statement.substring(statement
-                .length() - 1);
-        if (lastChar.equals("."))
-        {
-            statement = statement.substring(0, statement
-                .length() - 1);
-        }
-        int psn = findKeyword (statement, "I want to", 0);
-        String restOfStatement = statement.substring(psn + 9).trim();
-        return "What would it mean to " + restOfStatement + "?";
-    }
-    
-    /**
-     * Take a statement with "I want to <something>." and transform it into 
-     * "What would it mean to <something>?"
-     * @param statement the user statement, assumed to contain "I want to"
-     * @return the transformed statement
-     */
-    private String transformIWantToStatement(String statement)
-    {
-        //  Remove the final period, if there is one
-        statement = statement.trim();
-        String lastChar = statement.substring(statement
-                .length() - 1);
-        if (lastChar.equals("."))
-        {
-            statement = statement.substring(0, statement
-                .length() - 1);
-        }
-        int psn = findKeyword (statement, "I want to", 0);
-        String restOfStatement = statement.substring(psn + 9).trim();
-        return "What would it mean to " + restOfStatement + "?";
-    }
 
-    /**
-     * Take a statement with "I want <something>." and transform it into 
-     * "Would you really be happy if you had <something>?"
-     * @param statement the user statement, assumed to contain "I want"
-     * @return the transformed statement
-     */
-    private String transformIWantStatement(String statement)
-    {
-        //  Remove the final period, if there is one
-        statement = statement.trim();
-        String lastChar = statement.substring(statement
-                .length() - 1);
-        if (lastChar.equals("."))
-        {
-            statement = statement.substring(0, statement
-                .length() - 1);
-        }
-        int psn = findKeyword (statement, "I want", 0);
-        String restOfStatement = statement.substring(psn + 6).trim();
-        return "Would you really be happy if you had " + restOfStatement + "?";
-    }
-
-    /**
-     * Take a statement with "you <something> me" and transform it into 
-     * "What makes you think that I <something> you?"
-     * @param statement the user statement, assumed to contain "you" followed by "me"
-     * @return the transformed statement
-     */
-    private String transformYouMeStatement(String statement)
-    {
-        //  Remove the final period, if there is one
-        statement = statement.trim();
-        String lastChar = statement.substring(statement
-                .length() - 1);
-        if (lastChar.equals("."))
-        {
-            statement = statement.substring(0, statement
-                .length() - 1);
-        }
-
-        int psnOfYou = findKeyword (statement, "you", 0);
-        int psnOfMe = findKeyword (statement, "me", psnOfYou + 3);
-
-        String restOfStatement = statement.substring(psnOfYou + 3, psnOfMe).trim();
-        return "What makes you think that I " + restOfStatement + " you?";
-    }
-
-    /**
-     * Take a statement with "I <something> you" and transform it into 
-     * "Why do you <something> me?"
-     * @param statement the user statement, assumed to contain "I" followed by "you"
-     * @return the transformed statement
-     */
-    private String transformIYouStatement(String statement)
-    {
-        //  Remove the final period, if there is one
-        statement = statement.trim();
-        String lastChar = statement.substring(statement
-                .length() - 1);
-        if (lastChar.equals("."))
-        {
-            statement = statement.substring(0, statement
-                .length() - 1);
-        }
-
-        int psnOfI = findKeyword (statement, "I", 0);
-        int psnOfYou = findKeyword (statement, "you", psnOfI);
-
-        String restOfStatement = statement.substring(psnOfI + 1, psnOfYou).trim();
-        return "Why do you " + restOfStatement + " me?";
-    }
-
-    
     /**
      * Search for one word in phrase.  The search is not case sensitive.
      * This method will check that the given goal is not a substring of a longer string
@@ -280,7 +177,6 @@ public class johnLennon
     {
         return findKeyword (statement, goal, 0);
     }
-
 
     /**
      * Pick a default response to use if nothing else fits.
