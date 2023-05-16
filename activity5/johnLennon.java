@@ -101,6 +101,14 @@ public class johnLennon
             "in molding his musical tastes. While their partnership was not without its difficulties, \n"+
             "Bobby was a crucial part of John's life and artistic growth.";
         }
+        else if (findKeyword(statement, "lsd") >= 0
+            || findKeyword(statement, "drugs") >= 0)
+            {
+                response = "LSD had a significant individual and artistic impact on John Lennon's life. \n"+
+                "It helped in expanding his horizons and changing his outlook on the world, \n"+
+                "impacting his music and personal views. However, his mental health and relationships \n"+
+                "deteriorated as a result of his extended drug usage.";
+            }
 
         else {
             if (findKeyword(statement, "Julian") >= 0
